@@ -57,8 +57,8 @@ class PageIndicator @JvmOverloads constructor(
       dotManager?.let { it.dots.forEachIndexed { index, dot -> dotSizes[index] = it.dotSizeFor(dot) } }
       dotAnimators = Array(value) { ValueAnimator() }
 
-      initialPadding = when (count) {
-        in 1..4 -> (dotBound + (4 - count) * (dotSize + dotSpacing) + dotSpacing) / 2
+      initialPadding = when (value) {
+        in 0..4 -> (dotBound + (4 - value) * (dotSize + dotSpacing) + dotSpacing) / 2
         else -> 2 * (dotSize + dotSpacing)
       }
       invalidate()
