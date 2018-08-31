@@ -1,10 +1,10 @@
 ext {
   // Android Version
   minSdkVersion = 14
-  compileSdkVersion = 27
-  targetSdkVersion = 27
-  gradleVersion = '3.1.1'
-  kotlinVersion = '1.2.40'
+  compileSdkVersion = 28
+  targetSdkVersion = 28
+  gradleVersion = '3.1.4'
+  kotlinVersion = '1.2.61'
 
   supportLibraryVersion = '27.1.1'
 
@@ -20,7 +20,7 @@ ext {
   constraintLayout = groupId + '.constraint:constraint-layout:1.1.0'
 
 
-  picasso = 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
+  picasso = 'com.squareup.picasso:picasso:2.71828'
 
   supportLibs = [appcompatV7,
                  cardView,

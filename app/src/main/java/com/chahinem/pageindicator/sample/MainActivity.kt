@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     pagerPageIndicator.attachTo(pager)
 
     // Manual
-    manualPageIndicator.count = 777
+    manualPageIndicator.count = 0
     leftBtn.setOnClickListener { manualPageIndicator.swipePrevious() }
     rightBtn.setOnClickListener { manualPageIndicator.swipeNext() }
   }
