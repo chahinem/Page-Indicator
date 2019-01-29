@@ -1,6 +1,6 @@
 package com.chahinem.pageindicator.sample
 
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.chahinem.pageindicator.sample.MyAdapter.MyItem
 import com.squareup.picasso.Picasso
 
 class MyPagerAdapter(private val picasso: Picasso,
-                     private val items: List<MyItem>) : PagerAdapter() {
+                     private val items: List<MyItem>) : androidx.viewpager.widget.PagerAdapter() {
 
   override fun getCount() = items.size
 

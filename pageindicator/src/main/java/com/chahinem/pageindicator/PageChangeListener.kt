@@ -1,8 +1,8 @@
 package com.chahinem.pageindicator
 
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 
-internal class PageChangeListener(private val indicator: PageIndicator) : ViewPager.OnPageChangeListener {
+internal class PageChangeListener(private val indicator: PageIndicator) : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
   private var selectedPage = 0
 
   override fun onPageScrollStateChanged(state: Int) {}

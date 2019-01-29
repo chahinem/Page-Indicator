@@ -1,6 +1,6 @@
 package com.chahinem.pageindicator.sample
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.chahinem.pageindicator.sample.MyAdapter.MyViewHolder
 import com.squareup.picasso.Picasso
 
-class MyAdapter(private val picasso: Picasso) : RecyclerView.Adapter<MyViewHolder>() {
+class MyAdapter(private val picasso: Picasso) : androidx.recyclerview.widget.RecyclerView.Adapter<MyViewHolder>() {
 
   private val items: MutableList<MyItem> = mutableListOf()
 
@@ -30,7 +30,7 @@ class MyAdapter(private val picasso: Picasso) : RecyclerView.Adapter<MyViewHolde
     notifyDataSetChanged()
   }
 
-  class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+  class MyViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
     private val title: TextView = itemView.findViewById(R.id.title)
     private val caption: TextView = itemView.findViewById(R.id.caption)
