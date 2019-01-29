@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.os.Parcelable
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v4.view.ViewPager.OnPageChangeListener
@@ -81,9 +82,11 @@ class PageIndicator @JvmOverloads constructor(
     animDuration = ta.getInteger(
         R.styleable.PageIndicator_piAnimDuration, DEFAULT_ANIM_DURATION).toLong()
     defaultPaint.color = ta.getColor(
-        R.styleable.PageIndicator_piDefaultColor, resources.getColor(R.color.pi_default_color))
+        R.styleable.PageIndicator_piDefaultColor,
+        ContextCompat.getColor(getContext(), R.color.pi_default_color))
     selectedPaint.color = ta.getColor(
-        R.styleable.PageIndicator_piSelectedColor, resources.getColor(R.color.pi_selected_color))
+        R.styleable.PageIndicator_piSelectedColor,
+        ContextCompat.getColor(getContext(), (R.color.pi_selected_color)))
     animInterpolator = AnimationUtils.loadInterpolator(context, ta.getResourceId(
         R.styleable.PageIndicator_piAnimInterpolator,
         R.anim.pi_default_interpolator))
