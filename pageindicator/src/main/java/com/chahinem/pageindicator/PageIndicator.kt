@@ -187,11 +187,6 @@ class PageIndicator @JvmOverloads constructor(
     animateDots()
   }
 
-  infix fun onDataSetChanged(recyclerView: RecyclerView) {
-    count = recyclerView.adapter?.itemCount ?: 0
-    scrollToTarget(0)
-  }
-
   private fun animateDots() {
     dotManager?.let {
       val (start, end) = getDrawingRange()
