@@ -85,7 +85,7 @@ class PageIndicator @JvmOverloads constructor(
         ContextCompat.getColor(getContext(), R.color.pi_default_color))
     selectedPaint.color = ta.getColor(
         R.styleable.PageIndicator_piSelectedColor,
-        ContextCompat.getColor(getContext(), (R.color.pi_selected_color)))
+        ContextCompat.getColor(getContext(), R.color.pi_selected_color))
     animInterpolator = AnimationUtils.loadInterpolator(context, ta.getResourceId(
         R.styleable.PageIndicator_piAnimInterpolator,
         R.anim.pi_default_interpolator))
