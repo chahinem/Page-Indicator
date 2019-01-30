@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.chahinem.pageindicator.DotManager.TargetScrollListener
 
 class PageIndicator @JvmOverloads constructor(
@@ -41,8 +40,8 @@ class PageIndicator @JvmOverloads constructor(
   private var scrollAnimator: ValueAnimator? = null
   private var initialPadding: Int = 0
 
-  private var scrollListener: RecyclerView.OnScrollListener? = null
-  private var pageChangeListener: ViewPager.OnPageChangeListener? = null
+  private lateinit var scrollListener: RecyclerView.OnScrollListener
+  private lateinit var pageChangeListener: ViewPager.OnPageChangeListener
 
   var count: Int = 0
     set(value) {
@@ -158,19 +157,23 @@ class PageIndicator @JvmOverloads constructor(
     }
   }
 
-  fun attachTo(recyclerView: RecyclerView) {
-    scrollListener?.let { recyclerView.removeOnScrollListener(it) }
+  infix fun attachTo(recyclerView: RecyclerView) {
+    if (::scrollListener.isInitialized) {
+      recyclerView.removeOnScrollListener(scrollListener)
+    }
     count = recyclerView.adapter?.itemCount ?: 0
     scrollListener = ScrollListener(this)
-    recyclerView.addOnScrollListener(scrollListener!!)
+    recyclerView.addOnScrollListener(scrollListener)
     scrollToTarget(0)
   }
 
-  fun attachTo(viewPager: ViewPager) {
-    pageChangeListener?.let { viewPager.removeOnPageChangeListener(it) }
+  infix fun attachTo(viewPager: ViewPager) {
+    if (::pageChangeListener.isInitialized) {
+      viewPager.removeOnPageChangeListener(pageChangeListener)
+    }
     count = (viewPager.adapter as PagerAdapter).count
     pageChangeListener = PageChangeListener(this)
-    viewPager.addOnPageChangeListener(pageChangeListener as OnPageChangeListener)
+    viewPager.addOnPageChangeListener(pageChangeListener)
     scrollToTarget(0)
   }
 
@@ -182,6 +185,11 @@ class PageIndicator @JvmOverloads constructor(
   fun swipeNext() {
     dotManager?.goToNext()
     animateDots()
+  }
+
+  infix fun onDataSetChanged(recyclerView: RecyclerView) {
+    count = recyclerView.adapter?.itemCount ?: 0
+    scrollToTarget(0)
   }
 
   private fun animateDots() {

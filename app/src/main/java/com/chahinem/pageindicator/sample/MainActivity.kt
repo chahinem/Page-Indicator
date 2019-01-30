@@ -24,17 +24,17 @@ class MainActivity : AppCompatActivity() {
     // RecyclerView
     val adapter = MyAdapter(picasso)
     list.adapter = adapter
-    androidx.recyclerview.widget.LinearSnapHelper().attachToRecyclerView(list)
+    LinearSnapHelper().attachToRecyclerView(list)
     adapter.swapData(LIST_ITEMS)
-    pageIndicator.attachTo(list)
+    pageIndicator attachTo list
 
     // ViewPager
     val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
     pager.adapter = myPagerAdapter
-    pagerPageIndicator.attachTo(pager)
+    pagerPageIndicator attachTo pager
 
     // Manual
-    manualPageIndicator.count = 777
+    manualPageIndicator.count = 50
     leftBtn.setOnClickListener { manualPageIndicator.swipePrevious() }
     rightBtn.setOnClickListener { manualPageIndicator.swipeNext() }
   }
