@@ -1,0 +1,31 @@
+<scheme name="_@user_Default" version="142" parent_scheme="Default">
+  <metaInfo>
+    <property name="created">2018-08-30T17:22:31</property>
+    <property name="ide">AndroidStudio</property>
+    <property name="ideVersion">3.2.0.24</property>
+    <property name="modified">2018-08-30T17:29:27</property>
+    <property name="originalScheme">Default</property>
+  </metaInfo>
+  <colors>
+    <option name="FILESTATUS_ADDED" value="91b859" />
+    <option name="FILESTATUS_COPIED" value="91b859" />
+    <option name="FILESTATUS_DELETED" value="808080" />
+    <option name="FILESTATUS_HIJACKED" value="ffb62c" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d5756c" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d5756c" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d5756c" />
+    <option name="FILESTATUS_MERGED" value="7c4dff" />
+    <option name="FILESTATUS_MODIFIED" value="39adb5" />
+    <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="39adb5" />
+    <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="39adb5" />
+    <option name="FILESTATUS_OBSOLETE" value="ffcb6b" />
+    <option name="FILESTATUS_SUPPRESSED" value="b0bec5" />
+    <option name="FILESTATUS_SWITCHED" value="7c4dff" />
+    <option name="FILESTATUS_UNKNOWN" value="f77669" />
+    <option name="FILESTATUS_addedOutside" value="91b859" />
+    <option name="FILESTATUS_changelistConflict" value="d5756c" />
+    <option name="FILESTATUS_modifiedOutside" value="6182b8" />
+  </colors>
+</scheme>

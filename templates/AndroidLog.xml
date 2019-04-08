@@ -1,0 +1,9 @@
+<templateSet group="AndroidLog">
+  <template name="logg" value="android.util.Log.d(&quot;logi&quot;, &quot;$method$ : $content$&quot;)" description="My quick logs" toReformat="false" toShortenFQNames="true">
+    <variable name="method" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="true" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+</templateSet>

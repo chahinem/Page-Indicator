@@ -1,0 +1,14 @@
+<application>
+  <component name="ImportFilteringUsageViewSetting">
+    <option name="SHOW_IMPORTS" value="false" />
+  </component>
+  <component name="ShowUsagesSettings">
+    <option name="IS_FILTER_DUPLICATED_LINE" value="false" />
+  </component>
+  <component name="UsageViewSettings">
+    <option name="IS_FILTER_DUPLICATED_LINE" value="false" />
+    <option name="GROUP_BY_FILE_STRUCTURE" value="false" />
+    <option name="GROUP_BY_MODULE" value="false" />
+    <option name="GROUP_BY_PACKAGE" value="false" />
+  </component>
+</application>
