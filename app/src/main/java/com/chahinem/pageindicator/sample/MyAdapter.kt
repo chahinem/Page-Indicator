@@ -24,7 +24,7 @@ class MyAdapter(private val picasso: Picasso) : RecyclerView.Adapter<MyViewHolde
     holder.bind(picasso, items[holder.adapterPosition])
   }
 
-  fun swapData(data: Iterable<MyItem>?) {
+  fun setItems(data: Iterable<MyItem>?) {
     items.clear()
     data?.let { items.addAll(data) }
     notifyDataSetChanged()

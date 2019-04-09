@@ -2,43 +2,75 @@ package com.chahinem.pageindicator.sample
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup.LayoutParams
+import android.widget.LinearLayout
+import android.widget.LinearLayout.VERTICAL
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.chahinem.pageindicator.PageIndicator
 import com.chahinem.pageindicator.sample.MyAdapter.MyItem
 import com.squareup.picasso.Picasso.Builder
-import kotlinx.android.synthetic.main.activity_main.leftBtn
-import kotlinx.android.synthetic.main.activity_main.list
-import kotlinx.android.synthetic.main.activity_main.manualPageIndicator
-import kotlinx.android.synthetic.main.activity_main.pageIndicator
-import kotlinx.android.synthetic.main.activity_main.pager
-import kotlinx.android.synthetic.main.activity_main.pagerPageIndicator
-import kotlinx.android.synthetic.main.activity_main.rightBtn
 
-class MainActivity : AppCompatActivity() {
+class ProgrammaticallyActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(createContent())
+  }
 
+  private fun createContent(): View {
+    val verticalContainer = createVerticalContainer()
+    val pageIndicator = createPageIndicator()
+    val recyclerView = createRecyclerView()
+    pageIndicator.attachTo(recyclerView)
+
+
+    verticalContainer.addView(recyclerView)
+    verticalContainer.addView(pageIndicator)
+
+    return verticalContainer
+  }
+
+  private fun createVerticalContainer(): LinearLayout =
+      LinearLayout(this).apply { orientation = VERTICAL }
+
+  private fun createPageIndicator(): PageIndicator =
+      PageIndicator(this)
+          .apply {
+            layoutParams =
+                LinearLayout
+                    .LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+                    .apply { gravity = Gravity.CENTER_HORIZONTAL }
+            defaultColor = Color.parseColor("#C2DEFA")
+            selectedColor = Color.parseColor("#0075EB")
+          }
+
+  private fun createRecyclerView(): RecyclerView {
+    val recyclerView = RecyclerView(this)
+    val adapter = createAdapter()
+
+    val linearLayoutManager =
+        LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+
+    recyclerView.setHasFixedSize(true)
+    recyclerView.layoutManager = linearLayoutManager
+    recyclerView.adapter = adapter
+
+    val snapHelper = PagerSnapHelper()
+    snapHelper.attachToRecyclerView(recyclerView)
+
+    return recyclerView
+  }
+
+  private fun createAdapter(): MyAdapter {
     val picasso = Builder(this).build()
-
-    // RecyclerView
-    val adapter = MyAdapter(picasso)
-    list.adapter = adapter
-    LinearSnapHelper().attachToRecyclerView(list)
-    adapter.setItems(LIST_ITEMS)
-    pageIndicator attachTo list
-
-    // ViewPager
-    val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
-    pager.adapter = myPagerAdapter
-    pagerPageIndicator attachTo pager
-
-    // Manual
-    manualPageIndicator.count = 50
-    leftBtn.setOnClickListener { manualPageIndicator.swipePrevious() }
-    rightBtn.setOnClickListener { manualPageIndicator.swipeNext() }
+    return MyAdapter(picasso).apply { setItems(LIST_ITEMS) }
   }
 
   companion object {
@@ -75,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
     fun start(context: Context) {
       context.startActivity(
-          Intent(context, MainActivity::class.java))
+          Intent(context, ProgrammaticallyActivity::class.java))
     }
   }
 }
