@@ -3,7 +3,7 @@ ext {
   minSdkVersion = 14
   compileSdkVersion = 28
   targetSdkVersion = 28
-  gradleVersion = '3.2.1'
+  gradleVersion = '3.3.2'
   kotlinVersion = '1.3.20'
 
   supportLibraryVersion = '27.1.1'
