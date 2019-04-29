@@ -3,6 +3,7 @@ package com.chahinem.pageindicator.sample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.viewpager2.widget.ViewPager2
 import com.chahinem.pageindicator.sample.MyAdapter.MyItem
 import com.squareup.picasso.Picasso.Builder
 import kotlinx.android.synthetic.main.activity_main.leftBtn
@@ -10,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.list
 import kotlinx.android.synthetic.main.activity_main.manualPageIndicator
 import kotlinx.android.synthetic.main.activity_main.pageIndicator
 import kotlinx.android.synthetic.main.activity_main.pager
+import kotlinx.android.synthetic.main.activity_main.pager2
+import kotlinx.android.synthetic.main.activity_main.pager2PageIndicator
 import kotlinx.android.synthetic.main.activity_main.pagerPageIndicator
 import kotlinx.android.synthetic.main.activity_main.rightBtn
 
@@ -32,6 +35,13 @@ class MainActivity : AppCompatActivity() {
     val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
     pager.adapter = myPagerAdapter
     pagerPageIndicator attachTo pager
+
+    //ViewPager2 with vertical orientation
+    val myPager2Adapter = MyAdapter(picasso)
+    pager2.orientation = ViewPager2.ORIENTATION_VERTICAL
+    pager2.adapter = myPager2Adapter
+    myPager2Adapter.swapData(LIST_ITEMS)
+    pager2PageIndicator attachTo pager2
 
     // Manual
     manualPageIndicator.count = 50

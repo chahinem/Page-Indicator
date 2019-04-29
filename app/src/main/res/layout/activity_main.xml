@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        app:piOrientation="horizontal"
         />
 
     <TextView
@@ -58,7 +59,39 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        app:piOrientation="horizontal"
         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
+        android:text="ViewPager2 vertical"
+        style="@style/TextAppearance.AppCompat.Title"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        >
+
+      <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/pager2"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          />
+
+      <com.chahinem.pageindicator.PageIndicator
+          android:id="@+id/pager2PageIndicator"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end|center_vertical"
+          android:layout_marginEnd="32dp"
+          android:layout_marginRight="32dp"
+          app:piOrientation="vertical"
+          />
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -74,6 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        app:piOrientation="horizontal"
         />
 
     <LinearLayout

@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.chahinem.pageindicator.DotManager.TargetScrollListener
 
 class PageIndicator @JvmOverloads constructor(
@@ -34,6 +35,7 @@ class PageIndicator @JvmOverloads constructor(
   private val dotSpacing: Int
   private val animDuration: Long
   private val animInterpolator: Interpolator
+  private val orientation: Int
 
   private var dotManager: DotManager? = null
   private var scrollAmount: Int = 0
@@ -42,6 +44,7 @@ class PageIndicator @JvmOverloads constructor(
 
   private lateinit var scrollListener: RecyclerView.OnScrollListener
   private lateinit var pageChangeListener: ViewPager.OnPageChangeListener
+  private lateinit var pageChangeCallback: ViewPager2.OnPageChangeCallback
 
   var count: Int = 0
     set(value) {
@@ -89,18 +92,49 @@ class PageIndicator @JvmOverloads constructor(
     animInterpolator = AnimationUtils.loadInterpolator(context, ta.getResourceId(
         R.styleable.PageIndicator_piAnimInterpolator,
         R.anim.pi_default_interpolator))
+    orientation = ta.getInt(R.styleable.PageIndicator_piOrientation, -1)
     ta.recycle()
   }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     // FIXME: add support for `match_parent`
-    setMeasuredDimension(4 * (dotSize + dotSpacing) + dotBound, dotSize)
+      when (orientation) {
+      HORIZONTAL_ORIENTATION -> setMeasuredDimension(4 * (dotSize + dotSpacing) + dotBound, dotSize)
+      VERTICAL_ORIENTATION -> setMeasuredDimension(dotSize, 4 * (dotSize + dotSpacing) + dotBound)
+      else -> throw IllegalStateException("Orientation attribute must be set!")
+    }
   }
 
   override fun onDraw(canvas: Canvas?) {
     super.onDraw(canvas)
 
+    if (orientation == HORIZONTAL_ORIENTATION) {
+      drawHorizontal(canvas)
+    } else {
+      drawVertical(canvas)
+    }
+  }
+
+  private fun drawVertical(canvas: Canvas?) {
+    var paddingTop = initialPadding
+    val (start, end) = getDrawingRange()
+
+    paddingTop += (dotSize + dotSpacing) * start
+    (start until end).forEach {
+      canvas?.drawCircle(
+          dotSize / 2f,
+          paddingTop + dotSize / 2f - scrollAmount,
+          dotSizes[it] / 2f,
+          when (dotManager?.dots?.get(it)) {
+            BYTE_6 -> selectedPaint
+            else -> defaultPaint
+          })
+      paddingTop += dotSize + dotSpacing
+    }
+  }
+
+  private fun drawHorizontal(canvas: Canvas?) {
     var paddingStart = initialPadding
     val (start, end) = getDrawingRange()
 
@@ -177,6 +211,16 @@ class PageIndicator @JvmOverloads constructor(
     scrollToTarget(0)
   }
 
+  infix fun attachTo(viewPager2: ViewPager2) {
+    if (::pageChangeCallback.isInitialized) {
+      viewPager2.unregisterOnPageChangeCallback(pageChangeCallback)
+    }
+    count = viewPager2.adapter?.itemCount ?: 0
+    pageChangeCallback = PageChangeCallback(this)
+    viewPager2.registerOnPageChangeCallback(pageChangeCallback)
+    scrollToTarget(0)
+  }
+
   fun swipePrevious() {
     dotManager?.goToPrevious()
     animateDots()
@@ -226,5 +270,8 @@ class PageIndicator @JvmOverloads constructor(
     private const val DEFAULT_ANIM_DURATION = 200
 
     private val DEFAULT_INTERPOLATOR = DecelerateInterpolator()
+
+    const val HORIZONTAL_ORIENTATION = 0
+    const val VERTICAL_ORIENTATION = 1
   }
 }

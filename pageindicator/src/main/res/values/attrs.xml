@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="PageIndicator">
+    <attr format="enum" name="piOrientation">
+      <enum name="vertical" value="1"/>
+      <enum name="horizontal" value="0"/>
+    </attr>
+
     <attr format="dimension" name="piDotSpacing"/>
     <attr format="dimension" name="piDotBound"/>
 
