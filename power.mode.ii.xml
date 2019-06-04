@@ -1,0 +1,7 @@
+<application>
+  <component name="PowerModeII">
+    <option name="customBamImageFolder" value="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android Studio" />
+    <option name="customFlameImageFolder" value="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android Studio" />
+    <option name="soundsFolder" value="C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android Studio" />
+  </component>
+</application>
