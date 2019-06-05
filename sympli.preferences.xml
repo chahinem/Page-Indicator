@@ -1,0 +1,27 @@
+<application>
+  <component name="UserPreferences">
+    <option name="preferences">
+      <map>
+        <entry key="5be014d86dca0e2813d971d1">
+          <value>
+            <Prefs>
+              <option name="projects">
+                <map>
+                  <entry key="5a17e61c6a09c21f700758fd">
+                    <value>
+                      <Project>
+                        <option name="name" value="Mobile App" />
+                        <option name="synced" value="true" />
+                      </Project>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="showLayerInfoPanel" value="true" />
+            </Prefs>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</application>

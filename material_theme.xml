@@ -1,0 +1,13 @@
+<application>
+  <component name="MaterialThemeConfig">
+    <option name="allowDataCollection" value="true" />
+    <option name="isContrastMode" value="true" />
+    <option name="isHighContrast" value="true" />
+    <option name="isWizardShown" value="true" />
+    <option name="accentColor" value="cb7502" />
+    <option name="highlightColor" value="80cbc4" />
+    <option name="selectedTheme" value="MONOKAI" />
+    <option name="userId" value="-6468eccc:166ce83481d:-8000" />
+    <option name="version" value="3.5.0.1" />
+  </component>
+</application>

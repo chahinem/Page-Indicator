@@ -1,3 +1,0 @@
-include ':app'
-include ':pageindicator'
-project(':pageindicator').name = 'pageindicator'

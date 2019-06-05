@@ -1,0 +1,6 @@
+<application>
+  <component name="CodeInsightSettings">
+    <option name="AUTO_POPUP_JAVADOC_INFO" value="true" />
+    <EXCLUDED_PACKAGE NAME="kotlinx.android.synthetic.main.item_chat_message_partner.view.message" />
+  </component>
+</application>
