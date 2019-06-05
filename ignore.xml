@@ -1,5 +1,5 @@
 <application>
-  <component name="IgnoreSettings" missingGitignore="true" ignoredFileStatus="true" outerIgnoreRules="true" outerIgnoreWrapperHeight="100" version="2.6.2" starredTemplates="" unignoreActions="true" hideIgnoredFiles="false" informTrackedIgnored="true" notifyIgnoredEditing="true">
+  <component name="IgnoreSettings" missingGitignore="true" ignoredFileStatus="true" outerIgnoreRules="true" outerIgnoreWrapperHeight="100" version="3.1.2.183" starredTemplates="" unignoreActions="true" hideIgnoredFiles="false" notifyIgnoredEditing="true">
     <languages>
       <language id="Bazaar" NEW_FILE="true" ENABLE="true" />
       <language id="CloudFoundry" NEW_FILE="true" ENABLE="false" />
@@ -13,6 +13,7 @@
       <language id="Fossil" NEW_FILE="true" ENABLE="true" />
       <language id="Git" NEW_FILE="true" ENABLE="true" />
       <language id="Git exclude" NEW_FILE="true" ENABLE="true" />
+      <language id="Google Cloud" NEW_FILE="true" ENABLE="false" />
       <language id="Kubernetes Helm" NEW_FILE="true" ENABLE="false" />
       <language id="Jetpack" NEW_FILE="true" ENABLE="false" />
       <language id="JSHint" NEW_FILE="true" ENABLE="false" />
@@ -20,6 +21,7 @@
       <language id="Monotone" NEW_FILE="true" ENABLE="true" />
       <language id="Nodemon" NEW_FILE="true" ENABLE="false" />
       <language id="Npm" NEW_FILE="true" ENABLE="false" />
+      <language id="NuxtJS" NEW_FILE="true" ENABLE="false" />
       <language id="Perforce" NEW_FILE="true" ENABLE="true" />
       <language id="Prettier" NEW_FILE="true" ENABLE="false" />
       <language id="StyleLint" NEW_FILE="true" ENABLE="false" />
