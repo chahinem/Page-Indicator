@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -35,6 +35,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        />
+
+    <com.chahinem.pageindicator.PageIndicator
+        android:id="@+id/pageIndicator2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="8dp"
+        app:piCentered="false"
         />
 
     <TextView
@@ -107,4 +116,4 @@
         style="@style/TextAppearance.AppCompat.Caption"
         />
   </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>
