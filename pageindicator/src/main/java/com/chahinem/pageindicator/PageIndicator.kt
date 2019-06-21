@@ -37,6 +37,7 @@ open class PageIndicator @JvmOverloads constructor(
   private val animDuration: Long
   private val animInterpolator: Interpolator
   private var centered: Boolean = true
+  private val customInitalPadding: Int
 
   private var dotManager: DotManager? = null
   private var scrollAmount: Int = 0
@@ -60,10 +61,10 @@ open class PageIndicator @JvmOverloads constructor(
       dotManager?.let { it.dots.forEachIndexed { index, dot -> dotSizes[index] = it.dotSizeFor(dot) } }
       dotAnimators = Array(value) { ValueAnimator() }
 
-      initialPadding = if (!centered) {
-        0
-      } else {
-        when (value) {
+      initialPadding = when {
+        !centered -> 0
+        customInitalPadding != -1 -> customInitalPadding
+        else -> when (value) {
           in 0..4 -> (dotBound + (4 - value) * (dotSize + dotSpacing) + dotSpacing) / 2
           else -> 2 * (dotSize + dotSpacing)
         }
@@ -87,6 +88,7 @@ open class PageIndicator @JvmOverloads constructor(
     dotSpacing = ta.getDimensionPixelSize(R.styleable.PageIndicator_piDotSpacing, 3.dp)
     centered = ta.getBoolean(R.styleable.PageIndicator_piCentered, true)
     dotBound = ta.getDimensionPixelSize(R.styleable.PageIndicator_piDotBound, 40.dp)
+    customInitalPadding = ta.getDimensionPixelSize(R.styleable.PageIndicator_piInitialPadding, -1)
 
     animDuration = ta.getInteger(
         R.styleable.PageIndicator_piAnimDuration, DEFAULT_ANIM_DURATION).toLong()
@@ -105,7 +107,7 @@ open class PageIndicator @JvmOverloads constructor(
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     // FIXME: add support for `match_parent`
-    setMeasuredDimension(4 * (dotSize + dotSpacing) + dotBound, dotSize)
+    setMeasuredDimension(4 * (dotSize + dotSpacing) + dotBound + initialPadding, dotSize)
   }
 
   override fun onDraw(canvas: Canvas?) {

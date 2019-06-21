@@ -41,9 +41,16 @@
         android:id="@+id/pageIndicator2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:layout_marginTop="8dp"
-        app:piCentered="false"
+        app:piDotSpacing="8dp"
+        app:piInitialPadding="16dp"
+        app:piSize1="8dp"
+        app:piSize2="8dp"
+        app:piSize3="8dp"
+        app:piSize4="8dp"
+        app:piSize5="8dp"
+        app:piSize6="8dp"
         />
 
     <TextView
