@@ -3,6 +3,7 @@ package com.chahinem.pageindicator.sample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.viewpager2.widget.ViewPager2
 import com.chahinem.pageindicator.sample.MyAdapter.MyItem
 import com.squareup.picasso.Picasso.Builder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +28,18 @@ class MainActivity : AppCompatActivity() {
     val myPagerAdapter = MyPagerAdapter(picasso, LIST_ITEMS)
     pager.adapter = myPagerAdapter
     pagerPageIndicator attachTo pager
+
+
+    // ViewPager2
+    try {
+      val myPager2Adapter = MyPager2Adapter(picasso, LIST_ITEMS)
+      pager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+      pager2.adapter = myPager2Adapter
+      pagerPageIndicator2 attachTo pager2
+    } catch (ex: Exception) {
+      ex.printStackTrace()
+    }
+
 
     // Manual
     manualPageIndicator.count = 50

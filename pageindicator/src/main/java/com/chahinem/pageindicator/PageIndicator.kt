@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.chahinem.pageindicator.DotManager.TargetScrollListener
 import kotlin.math.max
 import kotlin.math.min
@@ -46,6 +47,7 @@ open class PageIndicator @JvmOverloads constructor(
 
   private lateinit var scrollListener: RecyclerView.OnScrollListener
   private lateinit var pageChangeListener: ViewPager.OnPageChangeListener
+  private lateinit var pageChangeListener2: ViewPager2.OnPageChangeCallback
 
   var count: Int = 0
     set(value) {
@@ -186,6 +188,16 @@ open class PageIndicator @JvmOverloads constructor(
     count = (viewPager.adapter as PagerAdapter).count
     pageChangeListener = PageChangeListener(this)
     viewPager.addOnPageChangeListener(pageChangeListener)
+    scrollToTarget(0)
+  }
+
+  infix fun attachTo(viewPager: ViewPager2) {
+    if (::pageChangeListener2.isInitialized) {
+      viewPager.unregisterOnPageChangeCallback(pageChangeListener2)
+    }
+    count = viewPager.adapter?.itemCount ?: 0
+    pageChangeListener2 = PageChangeListener2(this)
+    viewPager.registerOnPageChangeCallback(pageChangeListener2)
     scrollToTarget(0)
   }
 
