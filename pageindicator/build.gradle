@@ -28,6 +28,7 @@ android {
 dependencies {
   compileOnly rootProject.kotlinStdlib
   compileOnly rootProject.recyclerviewV7
+  compileOnly rootProject.viewpager2
   testImplementation rootProject.junit
   testImplementation rootProject.kotlinStdlib
 }

@@ -81,6 +81,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:padding="16dp"
+        android:text="ViewPager2"
+        style="@style/TextAppearance.AppCompat.Title"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager2"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        />
+
+    <com.chahinem.pageindicator.PageIndicator
+        android:id="@+id/pagerPageIndicator2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
         android:text="Manual"
         style="@style/TextAppearance.AppCompat.Title"
         />
